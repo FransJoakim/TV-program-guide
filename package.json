@@ -14,9 +14,12 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "nm-mock-api": "git+https://github.com/NoriginMedia/mock-api.git#cloudberry"
   },
   "scripts": {
+    "start:mock-api": "./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
+    "start:configured-api": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && npm run start:mock-api",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
