@@ -1,13 +1,13 @@
 import "./App.css";
-import { Mock } from "./components/mock";
+import { EPG } from "./components/EPG";
 import { ContextProvider } from "./lib/state";
 
 function App() {
   return (
     <ContextProvider>
       <div className="App">
-        <header className="App-header"></header>
-        <Mock></Mock>
+        {/* <header className="App-header"></header> */}
+        <EPG />
       </div>
     </ContextProvider>
   );
