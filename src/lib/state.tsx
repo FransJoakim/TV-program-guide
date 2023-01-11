@@ -1,28 +1,28 @@
 import { createContext, useEffect, useState } from "react";
 import { fetchProgramData } from "./services";
 
-export const ProgramContext = createContext<Channel[]>([]);
-
-interface Show {
+export interface ShowInterface {
   id: string;
   title: string;
-  start: number;
-  end: number;
+  start: string;
+  end: string;
 }
 
-export interface Channel {
+export interface ChannelInterface {
   id: string;
   title: string;
   images: {
     LOGO: string;
   };
-  schedules: Show[];
+  schedules: ShowInterface[];
 }
 
 type props = { children: JSX.Element };
 
+export const ProgramContext = createContext<ChannelInterface[]>([]);
+
 export function ContextProvider({ children }: props) {
-  const [channels, setChannels] = useState<Channel[]>([]);
+  const [channels, setChannels] = useState<ChannelInterface[]>([]);
 
   useEffect(() => {
     const getData = async () => {
