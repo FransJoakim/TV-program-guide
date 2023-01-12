@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { fetchProgramData } from "./services";
+import { fetchProgramData, getFractionOfDay } from "./services";
 
 export interface ShowInterface {
   id: string;
@@ -20,9 +20,11 @@ export interface ChannelInterface {
 type props = { children: JSX.Element };
 
 export const ProgramContext = createContext<ChannelInterface[]>([]);
+export const TimeContext = createContext(0);
 
 export function ContextProvider({ children }: props) {
   const [channels, setChannels] = useState<ChannelInterface[]>([]);
+  const [currentTime, setCurrentTime] = useState(getFractionOfDay(new Date()));
 
   useEffect(() => {
     const getData = async () => {
@@ -32,9 +34,19 @@ export function ContextProvider({ children }: props) {
     getData();
   }, []);
 
+  useEffect(() => {
+    const trackerInterval = setInterval(() => {
+      setCurrentTime(getFractionOfDay(new Date()));
+    }, 10000);
+
+    return () => clearInterval(trackerInterval);
+  }, []);
+
   return (
     <ProgramContext.Provider value={channels}>
-      {children}
+      <TimeContext.Provider value={currentTime}>
+        {children}
+      </TimeContext.Provider>
     </ProgramContext.Provider>
   );
 }

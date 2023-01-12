@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import { formatTime } from "../lib/services";
-import { ShowInterface } from "../lib/state";
+import { ShowInterface, ProgramContext } from "../lib/state";
 
-export const Show = ({
+const Show = ({
   show: { title, start, end },
   rootWidth,
 }: {
@@ -26,5 +27,23 @@ export const Show = ({
         {timeFormated.time.start} - {timeFormated.time.end}
       </p>
     </div>
+  );
+};
+
+export const Program = ({ rootWidth }: { rootWidth: number }) => {
+  const program = useContext(ProgramContext);
+
+  return (
+    <>
+      {program.map((channel) => (
+        <div key={channel.id}>
+          <div className="flex">
+            {channel.schedules.map((show, index) => (
+              <Show show={show} rootWidth={rootWidth} key={index} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </>
   );
 };

@@ -15,8 +15,7 @@ for (let i = 0; i < 24; i++) {
   hoursOfDay.push(hourOfDay + ":00");
 }
 
-const getFractionOfDay = (timeStamp: string): number => {
-  const date = new Date(timeStamp);
+export const getFractionOfDay = (date: Date): number => {
   const hoursAsWholeNumbers: string =
     date.getHours() === 0 ? "" : String(date.getHours());
   const minutesAsFraction: number = (date.getMinutes() * 5) / 3;
@@ -26,8 +25,8 @@ const getFractionOfDay = (timeStamp: string): number => {
 };
 
 const getIntervalWidth = (start: string, end: string): number => {
-  const startInterval = getFractionOfDay(start);
-  const endInterval = getFractionOfDay(end);
+  const startInterval = getFractionOfDay(new Date(start));
+  const endInterval = getFractionOfDay(new Date(end));
   return endInterval - startInterval;
 };
 

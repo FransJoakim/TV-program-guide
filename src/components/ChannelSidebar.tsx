@@ -1,13 +1,12 @@
-import { ChannelInterface } from "../lib/state";
+import { useContext } from "react";
+import { ProgramContext } from "../lib/state";
 
-export const ChannelMenuSidebar = ({
-  program,
-}: {
-  program: ChannelInterface[];
-}) => {
+export const ChannelSidebar = () => {
+  const program = useContext(ProgramContext);
+
   return (
-    <div className="bg-black w-20">
-      <div className="absolute bottom-0 top-0 bg-black">
+    <div className="bg-black w-20 h-full z-30">
+      <div className="absolute h-full bottom-0 top-0 z-30 bg-black">
         <div className="h-14 w-full" />
         {program.map((channel) => (
           <div

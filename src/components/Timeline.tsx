@@ -2,7 +2,7 @@ import { hoursOfDay } from "../lib/services";
 
 export const Timeline = ({ rootWidth }: { rootWidth: number }) => {
   return (
-    <div className="w-full h-14 bg-red-500 flex items-center">
+    <div className="w-full h-14 bg-red-500 flex relative items-center">
       {hoursOfDay.map((hour) => (
         <div
           style={{
