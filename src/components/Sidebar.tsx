@@ -15,7 +15,7 @@ export const Sidebar = ({ padding }: { padding: number }) => {
         {program.map((channel) => (
           <div
             style={{ width: padding + "px" }}
-            className="h-24 flex items-center justify-center text-textWhite md:text-xl lg:text-xl border-t border-borderGray"
+            className="h-24 flex items-center justify-center text-textWhite md:text-xl lg:text-xl border-t border-borderGray shadow-lg shadow-black"
             key={channel.id}
           >
             {channel.title}

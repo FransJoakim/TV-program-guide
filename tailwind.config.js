@@ -14,5 +14,8 @@ module.exports = {
       programBlack: "#111111",
       currentGray: "rgb(34, 34, 34)",
     },
+    boxShadow: {
+      lg: "10px 0 10px #111111, 0 0 0, 0 0 0",
+    },
   },
 };
