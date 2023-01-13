@@ -1,6 +1,7 @@
 {
   "name": "create-react-mock-epg",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "description": "A simple mock Electronic Programe Guide (EPG) single screen React-app",
   "bin": "./bin/cli.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
