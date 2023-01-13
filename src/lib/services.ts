@@ -24,12 +24,6 @@ export const getFractionOfDay = (date: Date): number => {
   return Number(hoursAsWholeNumbers + minToString);
 };
 
-const getIntervalWidth = (start: string, end: string): number => {
-  const startInterval = getFractionOfDay(new Date(start));
-  const endInterval = getFractionOfDay(new Date(end));
-  return endInterval - startInterval;
-};
-
 const formatTimeString = (time: string) => {
   const min = makeDoubleDigitStr(new Date(time).getMinutes());
   const hour = makeDoubleDigitStr(new Date(time).getHours());
@@ -37,10 +31,13 @@ const formatTimeString = (time: string) => {
 };
 
 export const formatTime = (start: string, end: string) => {
-  const timeIntervalWidth = getIntervalWidth(start, end);
-  const time = {
+  const timeInterval = {
+    start: getFractionOfDay(new Date(start)),
+    end: getFractionOfDay(new Date(end)),
+  };
+  const timeString = {
     start: formatTimeString(start),
     end: formatTimeString(end),
   };
-  return { time, timeIntervalWidth };
+  return { timeString, timeInterval };
 };

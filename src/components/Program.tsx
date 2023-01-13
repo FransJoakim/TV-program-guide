@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { formatTime } from "../lib/services";
-import { ShowInterface, ProgramContext } from "../lib/state";
+import { ShowInterface, ProgramContext, TimeContext } from "../lib/state";
 
 const Show = ({
   show: { title, start, end },
@@ -10,21 +10,30 @@ const Show = ({
   rootWidth: number;
 }) => {
   const timeFormated = formatTime(start, end);
+  const currentTime = useContext(TimeContext);
+
+  const timeIntervalWidth =
+    timeFormated.timeInterval.end - timeFormated.timeInterval.start;
+  const isCurrentlyScreening =
+    currentTime >= timeFormated.timeInterval.start &&
+    currentTime < timeFormated.timeInterval.end;
+
   return (
     <div
-      className="h-24 flex flex-col border-r border-b border-gray-400 p-2"
+      className="h-24 flex flex-col border-r border-b border-borderGray p-2"
       style={{
-        width:
-          (24 * rootWidth) / (2400 / timeFormated.timeIntervalWidth) + "rem",
+        width: (24 * rootWidth) / (2400 / timeIntervalWidth) + "rem",
+        backgroundColor: isCurrentlyScreening ? "rgb(34, 34, 34)" : "#111111",
       }}
     >
-      <p>{title}</p>
+      <p className="text-textWhite">{title}</p>
       <p
         style={{
-          fontSize: timeFormated.timeIntervalWidth < 40 ? "0.8rem" : "0.9rem",
+          fontSize: timeIntervalWidth < 40 ? "0.8rem" : "0.9rem",
         }}
+        className="text-textGray"
       >
-        {timeFormated.time.start} - {timeFormated.time.end}
+        {timeFormated.timeString.start} - {timeFormated.timeString.end}
       </p>
     </div>
   );

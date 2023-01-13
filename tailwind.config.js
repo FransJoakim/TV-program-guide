@@ -2,7 +2,17 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      mono: ["Courier", "ui-monospace", "SFMono-Regular"],
+    },
+    colors: {
+      background: "#202020",
+      textWhite: "#f4f4f4",
+      textGray: "#959595",
+      borderGray: "#434343",
+      orange: "rgb(217, 145, 25)",
+      programBlack: "#111111",
+      currentGray: "rgb(34, 34, 34)",
+    },
   },
-  plugins: [],
 };
