@@ -3,5 +3,5 @@ This is a mock Electronic Programe Guide (EPG) package consists of a single scre
 Install the package by running:
 
 ```
-npx create-react-mock-epg your-project-name
+npx create-react-mock-epg-app your-project-name
 ```
