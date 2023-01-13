@@ -4,4 +4,6 @@ Install the package by running:
 
 ```
 npx create-react-mock-epg-app your-project-name
+
+cd your-project-name && npm start
 ```
