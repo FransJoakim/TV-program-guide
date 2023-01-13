@@ -25,7 +25,6 @@ const installedDeps = runCommand(installDepsCommand);
 if (!installedDeps) process.exit(-1);
 
 console.log(
-  "Congratulations! You are ready to try my EPG. Execute the following commands in two different terminal windows"
+  "Congratulations! You are ready to try my EPG. Copy the following command to start"
 );
-console.log(`cd ${repoName} && npm start:configured-api`);
 console.log(`cd ${repoName} && npm start`);

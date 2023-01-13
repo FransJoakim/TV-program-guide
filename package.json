@@ -1,6 +1,6 @@
 {
   "name": "create-react-mock-epg",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "bin": "./bin/cli.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start:mock-api": "./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
-    "start:configured-api": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && npm run start:mock-api -d",
+    "prestart": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && npm run start:mock-api&",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

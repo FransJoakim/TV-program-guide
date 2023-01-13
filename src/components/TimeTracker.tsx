@@ -1,5 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { getFractionOfDay } from "../lib/services";
+import { useContext } from "react";
 import { TimeContext } from "../lib/state";
 
 export const TimeTracker = ({ rootWidth }: { rootWidth: number }) => {

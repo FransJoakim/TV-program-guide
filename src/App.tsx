@@ -2,7 +2,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Timeline } from "./components/Timeline";
 import { Program } from "./components/Program";
 import { TimeTracker } from "./components/TimeTracker";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { TimeContext } from "./lib/state";
 import { NowButton } from "./components/NowButton";
 
@@ -15,14 +15,14 @@ function App() {
   let sidebarWidth = windowWidth / 8;
   if (sidebarWidth < 100) sidebarWidth = 100;
 
-  const scrollToCurrent = () => {
+  const scrollToCurrent = useCallback(() => {
     if (ref.current)
       ref.current.scrollTo({
         top: 0,
         left: currentPosition * 16 - window.innerWidth / 2 + sidebarWidth / 2,
         behavior: "smooth",
       });
-  };
+  }, [currentPosition, sidebarWidth]);
 
   useEffect(() => {
     scrollToCurrent();
@@ -30,7 +30,7 @@ function App() {
       scrollToCurrent();
       setWindowWidth(window.innerWidth);
     });
-  }, []);
+  }, [scrollToCurrent]);
 
   return (
     <div
