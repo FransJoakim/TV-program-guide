@@ -1,7 +1,6 @@
 {
-  "name": "create-react-mock-epg",
-  "version": "1.0.4",
-  "description": "A simple mock Electronic Programe Guide (EPG) single screen React-app",
+  "name": "create-react-mock-epg-app",
+  "version": "1.0.0",
   "bin": "./bin/cli.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -46,11 +45,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.4"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FransJoakim/TV-program-guide-Norigin.git"
-  },
-  "homepage": "https://github.com/FransJoakim/TV-program-guide-Norigin#readme"
+  }
 }
