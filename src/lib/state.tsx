@@ -29,7 +29,7 @@ export function ContextProvider({ children }: props) {
   useEffect(() => {
     const getData = async () => {
       const data = await fetchProgramData();
-      setChannels(data.channels);
+      setChannels(data);
     };
     getData();
   }, []);
