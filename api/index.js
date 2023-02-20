@@ -5,7 +5,7 @@ var moment = require("moment");
 
 app.use(cors());
 
-// app.use(express.static("build"));
+app.use(express.static("build"));
 
 const getUpdatedEpgData = () => {
   let rawdata = fs.readFileSync("./data.json");
