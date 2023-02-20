@@ -12,7 +12,7 @@ export interface ChannelInterface {
   id: string;
   title: string;
   images: {
-    LOGO: string;
+    logo: string;
   };
   schedules: ShowInterface[];
 }
@@ -29,7 +29,7 @@ export function ContextProvider({ children }: props) {
   useEffect(() => {
     const getData = async () => {
       const data = await fetchProgramData();
-      setChannels(data.channels);
+      setChannels(data);
     };
     getData();
   }, []);

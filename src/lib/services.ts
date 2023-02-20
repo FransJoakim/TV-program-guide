@@ -1,8 +1,29 @@
+import epgData from "./data.json";
+import moment from "moment";
+
+const alignToCurrentDay = function (time: string) {
+  const currentDay = moment().format("YYYY-MM-DD");
+  const timeOffset = moment(time).format("HH:mm");
+  return currentDay + " " + timeOffset;
+};
+
 export const fetchProgramData = async () => {
-  const programData = await fetch("http://localhost:1337/epg").then((data) =>
-    data.json()
-  );
-  return programData;
+  for (let i = 0; i < epgData.length; i++) {
+    const channel = epgData[i];
+    const schedules = channel.schedules;
+
+    for (let j = 0; j < schedules.length; j++) {
+      const program = schedules[j];
+
+      program.start = alignToCurrentDay(program.start);
+      program.end = alignToCurrentDay(program.end);
+
+      epgData[i].schedules[j] = program;
+    }
+  }
+
+  // fs.writeFileSync("./data.json", epgData);
+  return epgData;
 };
 
 const makeDoubleDigitStr = (n: number): string => {
