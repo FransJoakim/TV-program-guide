@@ -1,6 +1,4 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+const app = require("express")();
 const fs = require("fs");
 const cors = require("cors");
 var moment = require("moment");
@@ -42,6 +40,8 @@ app.get("/api", (req, res) => {
   res.json(epg);
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// });
+
+module.exports = app;
