@@ -1,8 +1,8 @@
 export const fetchProgramData = async () => {
-  const programData = await fetch(process.env.REACT_APP_baseurl + "/api").then(
-    (data) => data.json()
-  );
-  return programData.channels;
+  const programData = await fetch(
+    process.env.REACT_APP_baseurl + ":1337/epg"
+  ).then((data) => data.json());
+  return programData;
 };
 
 const makeDoubleDigitStr = (n: number): string => {
